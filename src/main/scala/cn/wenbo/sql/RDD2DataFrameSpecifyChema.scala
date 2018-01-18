@@ -1,4 +1,4 @@
-package scala.wenbo.sql
+package cn.wenbo.sql
 
 import org.apache.spark.sql.types.{StructField, StructType, StringType, IntegerType}
 import org.apache.spark.sql.{Row, SparkSession}

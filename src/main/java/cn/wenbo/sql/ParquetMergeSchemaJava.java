@@ -2,7 +2,7 @@ package cn.wenbo.sql;
 
 import org.apache.spark.sql.SparkSession;
 
-public class ParquetMergeSchema {
+public class ParquetMergeSchemaJava {
     public static void main(String[] args) {
         // 1. 创建SparkSession
         SparkSession spark = SparkSession.builder()

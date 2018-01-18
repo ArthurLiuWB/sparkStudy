@@ -12,7 +12,7 @@ import org.apache.spark.sql.types.StructType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RDD2DataFrameSpecifySchema {
+public class RDD2DataFrameSpecifySchemaJava {
     public static void main(String[] args) {
         // 1. 创建SparkSession
         SparkSession spark = SparkSession.builder()

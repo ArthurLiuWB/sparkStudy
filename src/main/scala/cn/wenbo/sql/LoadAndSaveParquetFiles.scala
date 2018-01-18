@@ -1,4 +1,4 @@
-package scala.wenbo.sql
+package cn.wenbo.sql
 import org.apache.spark.sql.{Row, SparkSession}
 object LoadAndSaveParquetFiles extends App {
   val spark = SparkSession.builder()

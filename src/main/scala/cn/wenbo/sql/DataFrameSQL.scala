@@ -1,4 +1,4 @@
-package scala.wenbo.sql
+package cn.wenbo.sql
 
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
