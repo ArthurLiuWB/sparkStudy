@@ -33,6 +33,13 @@ object RDD2DataFrameSpecifyChema extends App {
       StructField("sex", StringType, nullable = true)
     )
   )
+  val arr =  Array(
+    // structField 的参数分别为 字段名称、字段类型、是否为空
+    StructField("name", StringType, nullable = true),
+    StructField("age", IntegerType, nullable = true),
+    StructField("sex", StringType, nullable = true)
+  )
+  //spark.create
   // 4. 使用sparkSession的createDataFrame方法创建DataFrame
   // 参数为，ROW类型的RDD 和 StructType对象
   val peopleDF = spark.createDataFrame(rowRDD, structType)
