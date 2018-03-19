@@ -16,7 +16,7 @@ object RDD2DataFrameSpecifyChema extends App {
     // 拿到或者创建sparkSession
     .getOrCreate()
   // 2. 创建元素格式为Row类型的RDD
-  val rowRDD = spark.sparkContext.textFile("file:\\F:\\test\\data\\student.txt")
+  val rowRDD = spark.sparkContext.textFile("/Applications/fluency/data/spark/student.txt")
     // 通过条用sparkContext的textFile方法，将文本文件生成元素为String类型的RDD
     // 默认每一行的数据为一个元素
     // 对每个元素使用逗号进行拆分，拆分的结果为字符数组
@@ -33,15 +33,27 @@ object RDD2DataFrameSpecifyChema extends App {
       StructField("sex", StringType, nullable = true)
     )
   )
-  val arr =  Array(
-    // structField 的参数分别为 字段名称、字段类型、是否为空
-    StructField("name", StringType, nullable = true),
-    StructField("age", IntegerType, nullable = true),
-    StructField("sex", StringType, nullable = true)
-  )
   //spark.create
   // 4. 使用sparkSession的createDataFrame方法创建DataFrame
   // 参数为，ROW类型的RDD 和 StructType对象
   val peopleDF = spark.createDataFrame(rowRDD, structType)
+  peopleDF.persist()
+  import spark.implicits._
+
+  /**
+    * DataFrame DSL
+    */
   peopleDF.show()
+  peopleDF.printSchema()
+  peopleDF.select("age").show()
+  peopleDF.groupBy("sex").count().show()
+
+  /**
+    * sql 操作
+    */
+  peopleDF.createOrReplaceTempView("student")
+  val sqlDF = spark.sql("select max(age) from student")
+  val sqlDF1 = spark.sql("select sum(age) from student")
+  sqlDF.show()
+  sqlDF1.show()
 }

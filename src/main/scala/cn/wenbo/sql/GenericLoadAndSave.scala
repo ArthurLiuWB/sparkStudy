@@ -17,5 +17,6 @@ object GenericLoadAndSave extends App{
   // 5. 写入hdfs
   sparkDF1.write.save("hdfs://192.168.87.6:9000/spark/parquet/cubeplus1")
   val sparkDF3 = spark.read.load("hdfs://192.168.87.6:9000/spark/parquet/cubeplus1")
+
   sparkDF3.show()
 }
